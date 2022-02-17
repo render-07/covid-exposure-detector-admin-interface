@@ -36,7 +36,8 @@ namespace Design_project_admin
 
         private void btnDelete_Click(object sender, System.EventArgs e)
         {
-
+            DeleteDevice obj = new DeleteDevice();
+            obj.ShowDialog();
         }
 
         private void btnClose_Click(object sender, System.EventArgs e)

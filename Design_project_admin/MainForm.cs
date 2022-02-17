@@ -80,7 +80,7 @@ namespace Design_project_admin
         private async Task LoadDevicesAsync(ManageDevice obj)
         {
             /// var records = await db.LoadRecord<DeviceModel>("devices");
-            var records = Task.Run(() => db.LoadRecord<DeviceModel>("devices"));
+            var records = Task.Run(() => db.LoadAllRecords<DeviceModel>("devices"));
 
             var progressBarCount = 0;
             while (progressBarCount <= 100)

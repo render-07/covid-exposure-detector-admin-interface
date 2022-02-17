@@ -28,7 +28,7 @@ namespace MongoDBLibrary
 
         #region Read
 
-        public List<T> LoadRecord<T>(string table)
+        public List<T> LoadAllRecords<T>(string table)
         {
             var collection = db.GetCollection<T>(table);
             return collection.Find(new BsonDocument() { }).Sort("{_id:-1}").ToList();
@@ -41,6 +41,17 @@ namespace MongoDBLibrary
             var filter = builder.Eq("uid", uid);
             return collection.Find(filter).ToList();
         }
+
+        #endregion
+
+        #region Delete
+
+        public void DeleteRecordByDeviceName<T>(string table, string deviceName)
+        {
+            var collection = db.GetCollection<T>(table);
+            var filter = Builders<T>.Filter.Eq("deviceName", deviceName);
+            collection.DeleteOne(filter);
+            }
 
         #endregion
 

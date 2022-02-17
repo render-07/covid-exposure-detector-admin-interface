@@ -82,6 +82,6 @@ D:\Redner BSCPE\4th Year BSCPE 4-6\Design Project\THESIS\covid-exposure-detector
 D:\Redner BSCPE\4th Year BSCPE 4-6\Design Project\THESIS\covid-exposure-detector-admin-interface\Design_project_admin\obj\Debug\Design_project_admin.Splash.resources
 D:\Redner BSCPE\4th Year BSCPE 4-6\Design Project\THESIS\covid-exposure-detector-admin-interface\Design_project_admin\obj\Debug\Design_project_admin.csproj.GenerateResource.cache
 D:\Redner BSCPE\4th Year BSCPE 4-6\Design Project\THESIS\covid-exposure-detector-admin-interface\Design_project_admin\obj\Debug\Design_project_admin.csproj.CoreCompileInputs.cache
-D:\Redner BSCPE\4th Year BSCPE 4-6\Design Project\THESIS\covid-exposure-detector-admin-interface\Design_project_admin\obj\Debug\Design_project_admin.csproj.CopyComplete
 D:\Redner BSCPE\4th Year BSCPE 4-6\Design Project\THESIS\covid-exposure-detector-admin-interface\Design_project_admin\obj\Debug\Design_project_admin.exe
 D:\Redner BSCPE\4th Year BSCPE 4-6\Design Project\THESIS\covid-exposure-detector-admin-interface\Design_project_admin\obj\Debug\Design_project_admin.pdb
+D:\Redner BSCPE\4th Year BSCPE 4-6\Design Project\THESIS\covid-exposure-detector-admin-interface\Design_project_admin\obj\Debug\Design_project_admin.DeleteDevice.resources
