@@ -72,6 +72,12 @@
     <Compile Include="DeleteDevice.Designer.cs">
       <DependentUpon>DeleteDevice.cs</DependentUpon>
     </Compile>
+    <Compile Include="LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,6 +104,9 @@
     <EmbeddedResource Include="DeleteDevice.resx">
       <DependentUpon>DeleteDevice.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -112,6 +121,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Splash.resx">
       <DependentUpon>Splash.cs</DependentUpon>
@@ -135,6 +145,18 @@
       <Project>{1ae085ad-c17d-4ad5-b0e4-ff54bd03f1b4}</Project>
       <Name>MongoDBLibrary</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\4438355.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\networking.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\undraw_social_distancing_2g0u %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\undraw_social_distancing_2g0u %282%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

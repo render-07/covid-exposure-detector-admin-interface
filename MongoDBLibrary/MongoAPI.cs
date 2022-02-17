@@ -42,6 +42,17 @@ namespace MongoDBLibrary
             return collection.Find(filter).ToList();
         }
 
+        public List<T> LoadAccountCredentials<T>(string table, string userName)
+        {
+            var collection = db.GetCollection<T>(table);
+            var builder = Builders<T>.Filter;
+            var filter = builder.Eq("userName", userName);
+            return collection.Find(filter).ToList();
+        }
+
+
+        
+
         #endregion
 
         #region Delete

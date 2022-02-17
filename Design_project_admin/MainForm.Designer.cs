@@ -62,14 +62,14 @@ namespace Design_project_admin
             this.panelSideMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelSideMenu.Location = new System.Drawing.Point(0, 0);
             this.panelSideMenu.Name = "panelSideMenu";
-            this.panelSideMenu.Size = new System.Drawing.Size(250, 661);
+            this.panelSideMenu.Size = new System.Drawing.Size(250, 700);
             this.panelSideMenu.TabIndex = 0;
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Gray;
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 604);
+            this.panel1.Location = new System.Drawing.Point(0, 643);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(250, 1);
             this.panel1.TabIndex = 5;
@@ -81,7 +81,7 @@ namespace Design_project_admin
             this.btnLogout.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
             this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogout.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnLogout.Location = new System.Drawing.Point(0, 605);
+            this.btnLogout.Location = new System.Drawing.Point(0, 644);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnLogout.Size = new System.Drawing.Size(250, 56);
@@ -165,9 +165,9 @@ namespace Design_project_admin
             this.panelBottom.Controls.Add(this.progressBar1);
             this.panelBottom.Controls.Add(this.lblStatus);
             this.panelBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelBottom.Location = new System.Drawing.Point(250, 519);
+            this.panelBottom.Location = new System.Drawing.Point(250, 558);
             this.panelBottom.Name = "panelBottom";
-            this.panelBottom.Size = new System.Drawing.Size(784, 142);
+            this.panelBottom.Size = new System.Drawing.Size(800, 142);
             this.panelBottom.TabIndex = 1;
             // 
             // progressBar1
@@ -175,7 +175,7 @@ namespace Design_project_admin
             this.progressBar1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.progressBar1.Location = new System.Drawing.Point(0, 119);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(784, 23);
+            this.progressBar1.Size = new System.Drawing.Size(800, 23);
             this.progressBar1.TabIndex = 2;
             // 
             // lblStatus
@@ -184,7 +184,7 @@ namespace Design_project_admin
             this.lblStatus.ForeColor = System.Drawing.Color.LightGray;
             this.lblStatus.Location = new System.Drawing.Point(20, 18);
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(80, 16);
+            this.lblStatus.Size = new System.Drawing.Size(78, 16);
             this.lblStatus.TabIndex = 0;
             this.lblStatus.Text = "Label status";
             // 
@@ -195,13 +195,13 @@ namespace Design_project_admin
             this.panelChildForm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelChildForm.Location = new System.Drawing.Point(250, 0);
             this.panelChildForm.Name = "panelChildForm";
-            this.panelChildForm.Size = new System.Drawing.Size(784, 519);
+            this.panelChildForm.Size = new System.Drawing.Size(800, 558);
             this.panelChildForm.TabIndex = 2;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox1.Location = new System.Drawing.Point(283, 147);
+            this.pictureBox1.Location = new System.Drawing.Point(291, 167);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(218, 221);
             this.pictureBox1.TabIndex = 0;
@@ -215,11 +215,12 @@ namespace Design_project_admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1034, 661);
+            this.ClientSize = new System.Drawing.Size(1050, 700);
             this.Controls.Add(this.panelChildForm);
             this.Controls.Add(this.panelBottom);
             this.Controls.Add(this.panelSideMenu);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Lato", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(1050, 700);
             this.Name = "MainForm";

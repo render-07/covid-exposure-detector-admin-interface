@@ -8,6 +8,7 @@ namespace Design_project_admin
     public partial class MainForm : Form
     {
         private readonly MongoAPI db = new MongoAPI("DP");
+        public bool Logout = false;
 
         public MainForm()
         {
@@ -72,7 +73,8 @@ namespace Design_project_admin
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
-
+            Logout = true;
+            Close();
         }
 
         # region CRUD Operations

@@ -41,14 +41,14 @@ namespace Design_project_admin
             // 
             this.txtUid.Location = new System.Drawing.Point(109, 47);
             this.txtUid.Name = "txtUid";
-            this.txtUid.Size = new System.Drawing.Size(234, 22);
+            this.txtUid.Size = new System.Drawing.Size(234, 23);
             this.txtUid.TabIndex = 0;
             // 
             // txtDeviceName
             // 
             this.txtDeviceName.Location = new System.Drawing.Point(109, 79);
             this.txtDeviceName.Name = "txtDeviceName";
-            this.txtDeviceName.Size = new System.Drawing.Size(234, 22);
+            this.txtDeviceName.Size = new System.Drawing.Size(234, 23);
             this.txtDeviceName.TabIndex = 1;
             // 
             // label1
@@ -67,7 +67,7 @@ namespace Design_project_admin
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(12, 82);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(91, 16);
+            this.label2.Size = new System.Drawing.Size(86, 16);
             this.label2.TabIndex = 3;
             this.label2.Text = "Device name:";
             // 
@@ -106,7 +106,8 @@ namespace Design_project_admin
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtDeviceName);
             this.Controls.Add(this.txtUid);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Lato", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "AddDevice";

@@ -40,7 +40,7 @@ namespace Design_project_admin
             {
                 timer1.Stop();
                 timer2.Start();
-                timer2.Interval = 100;
+                timer2.Interval = 20;
             }
         }
 
@@ -59,9 +59,7 @@ namespace Design_project_admin
             {
                 progressBar1.Value = 0;
                 timer2.Stop();
-                MainForm obj = new MainForm();
-                Hide();
-                obj.Show();
+                Close();
             }
         }
     }
