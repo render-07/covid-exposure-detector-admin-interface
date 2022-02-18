@@ -60,6 +60,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddAdminAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddAdminAccount.Designer.cs">
+      <DependentUpon>AddAdminAccount.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddDevice.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,6 +90,12 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ManageAdminAccountsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManageAdminAccountsForm.Designer.cs">
+      <DependentUpon>ManageAdminAccountsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ManageDevice.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,6 +110,9 @@
     <Compile Include="Splash.Designer.cs">
       <DependentUpon>Splash.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AddAdminAccount.resx">
+      <DependentUpon>AddAdminAccount.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddDevice.resx">
       <DependentUpon>AddDevice.cs</DependentUpon>
     </EmbeddedResource>
@@ -109,6 +124,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManageAdminAccountsForm.resx">
+      <DependentUpon>ManageAdminAccountsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ManageDevice.resx">
       <DependentUpon>ManageDevice.cs</DependentUpon>

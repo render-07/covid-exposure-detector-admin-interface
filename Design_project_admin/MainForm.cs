@@ -56,8 +56,38 @@ namespace Design_project_admin
             // increment to 100
             await Task.Delay(1000);
             progressBar1.Value = 0;
+        }
 
-           
+        private async void btnMangeAdminAccounts_Click(object sender, EventArgs e)
+        {
+            // Update UI
+            hideSubMenu();
+            lblStatus.Visible = true;
+            lblStatus.Text = "Loading accounts...";
+
+            try
+            {
+                // Initialize ManageDevice form
+                ManageAdminAccountsForm obj = new ManageAdminAccountsForm();
+                // On form load, trigger the ProgressBar effect
+                obj.TableData.Columns.Clear();
+                obj.TableData.Rows.Clear();
+                obj.FormClosed += Obj_FormClosed;
+                // Run operation in another thread
+                await LoadAccountsAsync(obj);
+                openChildForm(obj);
+            }
+            catch (Exception)
+            {
+                //Handle Exception
+            }
+
+            lblStatus.Text = "Accounts loaded.";
+            // This will now wait 1 second until it sets it to empty
+            // so you can see that the progress bar does
+            // increment to 100
+            await Task.Delay(1000);
+            progressBar1.Value = 0;
         }
 
         private void Obj_FormClosed(object sender, FormClosedEventArgs e)
@@ -66,10 +96,6 @@ namespace Design_project_admin
             lblStatus.Text = "";
         }
 
-        private void btnMangeAdminAccounts_Click(object sender, EventArgs e)
-        {
-            hideSubMenu();
-        }
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
@@ -108,6 +134,44 @@ namespace Design_project_admin
 
                 }
             }         
+        }
+
+        private async Task LoadAccountsAsync(ManageAdminAccountsForm obj)
+        {
+            /// var records = await db.LoadRecord<DeviceModel>("devices");
+            var records = Task.Run(() => db.LoadAllRecords<UserModel>("users"));
+
+            var progressBarCount = 0;
+            while (progressBarCount <= 100)
+            {
+                await Task.Delay(10);
+                progressBar1.Value = progressBarCount++;
+            }
+
+            obj.TableData.Columns.Add("Fullname");
+            obj.TableData.Columns.Add("Address");
+            obj.TableData.Columns.Add("Date of birth");
+            obj.TableData.Columns.Add("Username");
+            var result = await records;
+            foreach (var recs in result)
+            {
+                try
+                {
+                    // Populate the Datagrid from another form
+                    obj.TableData.Rows.Add(
+                        recs.firstName.ToString() + " " +
+                        recs.middleName.ToString() + " " +
+                        recs.lastName.ToString(),
+                        recs.address.ToString(),
+                        recs.dateOfBirth.ToString(),
+                        recs.userName.ToString()
+                    );
+                }
+                catch (System.NullReferenceException)
+                {
+
+                }
+            }
         }
 
         #endregion

@@ -50,8 +50,15 @@ namespace MongoDBLibrary
             return collection.Find(filter).ToList();
         }
 
+        public List<T> LoadRecordByUsername<T>(string table, string username)
+        {
+            var collection = db.GetCollection<T>(table);
+            var builder = Builders<T>.Filter;
+            var filter = builder.Eq("userName", username);
+            return collection.Find(filter).ToList();
+        }
 
-        
+
 
         #endregion
 
