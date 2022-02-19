@@ -206,5 +206,11 @@
   <ItemGroup>
     <None Include="Resources\iconmonstr-user-8-240.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconmonstr-log-out-7-240.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconmonstr-log-out-7-240.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

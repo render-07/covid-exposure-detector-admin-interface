@@ -30,9 +30,9 @@ namespace Design_project_admin
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.panelSideMenu = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnLogout = new System.Windows.Forms.Button();
             this.panelLogo = new System.Windows.Forms.Panel();
             this.panelBottom = new System.Windows.Forms.Panel();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
@@ -47,6 +47,7 @@ namespace Design_project_admin
             this.button3 = new System.Windows.Forms.Button();
             this.btnManageDevices = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.btnLogout = new System.Windows.Forms.Button();
             this.btnExposureLogs = new System.Windows.Forms.Button();
             this.panelSideMenu.SuspendLayout();
             this.panelBottom.SuspendLayout();
@@ -81,23 +82,6 @@ namespace Design_project_admin
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(250, 1);
             this.panel1.TabIndex = 5;
-            // 
-            // btnLogout
-            // 
-            this.btnLogout.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnLogout.FlatAppearance.BorderSize = 0;
-            this.btnLogout.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
-            this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLogout.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnLogout.Location = new System.Drawing.Point(0, 644);
-            this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnLogout.Size = new System.Drawing.Size(250, 56);
-            this.btnLogout.TabIndex = 3;
-            this.btnLogout.Text = "Logout";
-            this.btnLogout.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLogout.UseVisualStyleBackColor = true;
-            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // panelLogo
             // 
@@ -189,7 +173,7 @@ namespace Design_project_admin
             // 
             this.btnMangeAdminAccounts.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnMangeAdminAccounts.FlatAppearance.BorderSize = 0;
-            this.btnMangeAdminAccounts.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
+            this.btnMangeAdminAccounts.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(23)))), ((int)(((byte)(23)))));
             this.btnMangeAdminAccounts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMangeAdminAccounts.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnMangeAdminAccounts.Image = global::Design_project_admin.Properties.Resources.iconmonstr_user_8_2401;
@@ -207,7 +191,7 @@ namespace Design_project_admin
             // 
             this.button3.Dock = System.Windows.Forms.DockStyle.Top;
             this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
+            this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(23)))), ((int)(((byte)(23)))));
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.ForeColor = System.Drawing.Color.Gainsboro;
             this.button3.Image = global::Design_project_admin.Properties.Resources.iconmonstr_link_1_2401;
@@ -224,7 +208,7 @@ namespace Design_project_admin
             // 
             this.btnManageDevices.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnManageDevices.FlatAppearance.BorderSize = 0;
-            this.btnManageDevices.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
+            this.btnManageDevices.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(23)))), ((int)(((byte)(23)))));
             this.btnManageDevices.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnManageDevices.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnManageDevices.Image = global::Design_project_admin.Properties.Resources.iconmonstr_disk_9_240;
@@ -242,7 +226,7 @@ namespace Design_project_admin
             // 
             this.button1.Dock = System.Windows.Forms.DockStyle.Top;
             this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(23)))), ((int)(((byte)(23)))));
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.ForeColor = System.Drawing.Color.Gainsboro;
             this.button1.Image = global::Design_project_admin.Properties.Resources.iconmonstr_user_29_2401;
@@ -256,11 +240,29 @@ namespace Design_project_admin
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button1.UseVisualStyleBackColor = true;
             // 
+            // btnLogout
+            // 
+            this.btnLogout.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnLogout.FlatAppearance.BorderSize = 0;
+            this.btnLogout.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
+            this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogout.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnLogout.Image = global::Design_project_admin.Properties.Resources.iconmonstr_log_out_7_2401;
+            this.btnLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLogout.Location = new System.Drawing.Point(0, 644);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnLogout.Size = new System.Drawing.Size(250, 56);
+            this.btnLogout.TabIndex = 3;
+            this.btnLogout.Text = "Logout";
+            this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            // 
             // btnExposureLogs
             // 
             this.btnExposureLogs.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnExposureLogs.FlatAppearance.BorderSize = 0;
-            this.btnExposureLogs.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
+            this.btnExposureLogs.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(23)))), ((int)(((byte)(23)))));
             this.btnExposureLogs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExposureLogs.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnExposureLogs.Image = global::Design_project_admin.Properties.Resources.iconmonstr_virus_1_2401;
@@ -285,6 +287,7 @@ namespace Design_project_admin
             this.Controls.Add(this.panelSideMenu);
             this.Font = new System.Drawing.Font("Lato", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(1050, 700);
             this.Name = "MainForm";

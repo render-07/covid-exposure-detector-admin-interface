@@ -113,6 +113,26 @@ namespace Design_project_admin.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap iconmonstr_log_out_7_240 {
+            get {
+                object obj = ResourceManager.GetObject("iconmonstr-log-out-7-240", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconmonstr_log_out_7_2401 {
+            get {
+                object obj = ResourceManager.GetObject("iconmonstr-log-out-7-2401", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap iconmonstr_user_29_240 {
             get {
                 object obj = ResourceManager.GetObject("iconmonstr-user-29-240", resourceCulture);
