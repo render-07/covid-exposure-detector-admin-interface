@@ -179,5 +179,32 @@
   <ItemGroup>
     <None Include="Resources\273759060_474864474236489_1053595112813018540_n.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconmonstr-virus-1-240.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconmonstr-virus-1-240.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconmonstr-user-29-240.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconmonstr-user-29-240.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconmonstr-disk-9-240.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconmonstr-link-1-240.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconmonstr-link-1-240.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconmonstr-user-8-240.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconmonstr-user-8-240.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -38,73 +38,43 @@ namespace Design_project_admin
             lblTime.Text = Today();
         }
 
-        private void btnHome_Click(object sender, EventArgs e)
-        {
-            showSubMenu(panelSubMenu);
-        }
 
-        private async void btnManageDevices_Click(object sender, EventArgs e)
-        {
-            // Update UI
-            hideSubMenu();
-            lblStatus.Visible = true;
-            lblStatus.Text = "Loading devices...";
+        //private async void btnManageDevices_Click(object sender, EventArgs e)
+        //{
+        
+        //}
 
-            try
-            {
-                // Initialize ManageDevice form
-                ManageDevice obj = new ManageDevice();
-                // On form load, trigger the ProgressBar effect
-                obj.TableData.Columns.Clear();
-                obj.TableData.Rows.Clear();
-                obj.FormClosed += Obj_FormClosed;
-                // Run operation in another thread
-                await LoadDevicesAsync(obj);
-                openChildForm(obj);
-            }
-            catch (Exception)
-            {
-                //Handle Exception
-            }
-            lblStatus.Text = "Devices loaded.";
-            // This will now wait 1 second until it sets it to empty
-            // so you can see that the progress bar does
-            // increment to 100
-            await Task.Delay(1000);
-            progressBar1.Value = 0;
-        }
+        //private async void btnMangeAdminAccounts_Click(object sender, EventArgs e)
+        //{
+        //    // Update UI
+        //    hideSubMenu();
+        //    lblStatus.Visible = true;
+        //    lblStatus.Text = "Loading accounts...";
 
-        private async void btnMangeAdminAccounts_Click(object sender, EventArgs e)
-        {
-            // Update UI
-            hideSubMenu();
-            lblStatus.Visible = true;
-            lblStatus.Text = "Loading accounts...";
+        //    try
+        //    {
+        //        // Initialize ManageDevice form
+        //        ManageAdminAccountsForm obj = new ManageAdminAccountsForm();
+        //        // On form load, trigger the ProgressBar effect
+        //        obj.TableData.Columns.Clear();
+        //        obj.TableData.Rows.Clear();
+        //        obj.FormClosed += Obj_FormClosed;
+        //        // Run operation in another thread
+        //        await LoadAccountsAsync(obj);
+        //        openChildForm(obj);
+        //    }
+        //    catch (Exception)
+        //    {
+        //        //Handle Exception
+        //    }
 
-            try
-            {
-                // Initialize ManageDevice form
-                ManageAdminAccountsForm obj = new ManageAdminAccountsForm();
-                // On form load, trigger the ProgressBar effect
-                obj.TableData.Columns.Clear();
-                obj.TableData.Rows.Clear();
-                obj.FormClosed += Obj_FormClosed;
-                // Run operation in another thread
-                await LoadAccountsAsync(obj);
-                openChildForm(obj);
-            }
-            catch (Exception)
-            {
-                //Handle Exception
-            }
-
-            lblStatus.Text = "Accounts loaded.";
-            // This will now wait 1 second until it sets it to empty
-            // so you can see that the progress bar does
-            // increment to 100
-            await Task.Delay(1000);
-            progressBar1.Value = 0;
-        }
+        //    lblStatus.Text = "Accounts loaded.";
+        //    // This will now wait 1 second until it sets it to empty
+        //    // so you can see that the progress bar does
+        //    // increment to 100
+        //    await Task.Delay(1000);
+        //    progressBar1.Value = 0;
+        //}
 
         private void Obj_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -112,6 +82,10 @@ namespace Design_project_admin
             lblStatus.Text = "";
         }
 
+        private void btnExposureLogs_Click(object sender, EventArgs e)
+        {
+            // showSubMenu(panelSubMenu);
+        }
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
@@ -201,15 +175,15 @@ namespace Design_project_admin
 
         private void HideSubButtons()
         {
-            panelSubMenu.Visible = false;
+            // panelSubMenu.Visible = false;
         }
 
         private void hideSubMenu()
         {
-            if (panelSubMenu.Visible == true)
-            {
-                panelSubMenu.Visible = false;
-            }
+            //if (panelSubMenu.Visible == true)
+            //{
+            //    panelSubMenu.Visible = false;
+            //}
         }
 
         private void showSubMenu(Panel subMenu)
@@ -250,5 +224,67 @@ namespace Design_project_admin
 
         #endregion
 
+        private async void btnManageDevices_Click(object sender, EventArgs e)
+        {
+            // Update UI
+            hideSubMenu();
+            lblStatus.Visible = true;
+            lblStatus.Text = "Loading devices...";
+
+            try
+            {
+                // Initialize ManageDevice form
+                ManageDevice obj = new ManageDevice();
+                // On form load, trigger the ProgressBar effect
+                obj.TableData.Columns.Clear();
+                obj.TableData.Rows.Clear();
+                obj.FormClosed += Obj_FormClosed;
+                // Run operation in another thread
+                await LoadDevicesAsync(obj);
+                openChildForm(obj);
+            }
+            catch (Exception)
+            {
+                //Handle Exception
+            }
+            lblStatus.Text = "Devices loaded.";
+            // This will now wait 1 second until it sets it to empty
+            // so you can see that the progress bar does
+            // increment to 100
+            await Task.Delay(1000);
+            progressBar1.Value = 0;
+        }
+
+        private async void btnMangeAdminAccounts_Click(object sender, EventArgs e)
+        {
+            // Update UI
+            hideSubMenu();
+            lblStatus.Visible = true;
+            lblStatus.Text = "Loading accounts...";
+
+            try
+            {
+                // Initialize ManageDevice form
+                ManageAdminAccountsForm obj = new ManageAdminAccountsForm();
+                // On form load, trigger the ProgressBar effect
+                obj.TableData.Columns.Clear();
+                obj.TableData.Rows.Clear();
+                obj.FormClosed += Obj_FormClosed;
+                // Run operation in another thread
+                await LoadAccountsAsync(obj);
+                openChildForm(obj);
+            }
+            catch (Exception)
+            {
+                //Handle Exception
+            }
+
+            lblStatus.Text = "Accounts loaded.";
+            // This will now wait 1 second until it sets it to empty
+            // so you can see that the progress bar does
+            // increment to 100
+            await Task.Delay(1000);
+            progressBar1.Value = 0;
+        }
     }
 }
