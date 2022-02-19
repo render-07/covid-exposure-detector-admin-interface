@@ -63,6 +63,16 @@ namespace Design_project_admin.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _273759060_474864474236489_1053595112813018540_n {
+            get {
+                object obj = ResourceManager.GetObject("273759060_474864474236489_1053595112813018540_n", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _4438355 {
             get {
                 object obj = ResourceManager.GetObject("4438355", resourceCulture);

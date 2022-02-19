@@ -15,11 +15,27 @@ namespace Design_project_admin
             InitializeComponent();
             HideSubButtons();
             lblStatus.Visible = false;
+            tmrDate.Start();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
 
+        }
+
+        // TODO
+        // add person
+        // link person to device
+        // csv bulk for device
+        // csv bulk for persons
+        // Exposure Logs
+        // Persons
+        // Devices
+        // Accounts
+
+        private void tmrDate_Tick(object sender, EventArgs e)
+        {
+            lblTime.Text = Today();
         }
 
         private void btnHome_Click(object sender, EventArgs e)
@@ -225,7 +241,14 @@ namespace Design_project_admin
             childForm.Show();
         }
 
-        # endregion
+        private string Today()
+        {
+            // Returns date today.
+            DateTime today = DateTime.Now;
+            return today.ToString("MMM dd yyyy, hh:mm tt");
+        }
+
+        #endregion
 
     }
 }
