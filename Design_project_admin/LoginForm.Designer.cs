@@ -31,15 +31,16 @@ namespace Design_project_admin
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             this.btnLogin = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.lblUsername = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblPassword = new System.Windows.Forms.Label();
             this.lblLogin = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnLogin
@@ -56,16 +57,6 @@ namespace Design_project_admin
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = true;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Design_project_admin.Properties.Resources.undraw_social_distancing_2g0u__2_;
-            this.pictureBox1.Location = new System.Drawing.Point(334, 78);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(312, 240);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
             // 
             // txtUsername
             // 
@@ -94,6 +85,7 @@ namespace Design_project_admin
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.progressBar1);
             this.panel1.Controls.Add(this.lblPassword);
             this.panel1.Controls.Add(this.txtPassword);
             this.panel1.Controls.Add(this.lblUsername);
@@ -124,8 +116,27 @@ namespace Design_project_admin
             this.lblLogin.TabIndex = 6;
             this.lblLogin.Text = "Login";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Design_project_admin.Properties.Resources.undraw_social_distancing_2g0u__2_;
+            this.pictureBox1.Location = new System.Drawing.Point(334, 78);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(312, 240);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(32, 154);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(238, 10);
+            this.progressBar1.TabIndex = 7;
+            this.progressBar1.Visible = false;
+            // 
             // LoginForm
             // 
+            this.AcceptButton = this.btnLogin;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(7)))), ((int)(((byte)(17)))));
@@ -144,9 +155,9 @@ namespace Design_project_admin
             this.Text = "Login";
             this.Load += new System.EventHandler(this.LoginForm_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.LoginForm_Paint);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -162,5 +173,6 @@ namespace Design_project_admin
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblPassword;
         private System.Windows.Forms.Label lblLogin;
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }

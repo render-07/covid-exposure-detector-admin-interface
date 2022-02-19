@@ -8,6 +8,7 @@ using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -51,51 +52,74 @@ namespace Design_project_admin
             
         }
 
-        private void Authenticate()
+        private async void Authenticate()
         {
-            // THIS IS SUPER ACCOUNT (stored in the application).
-            if (txtUsername.Text == DEFAULT_USERNAME && txtPassword.Text == DEFAULT_PASSWORD)
+            await AuthenticateAsync();
+
+            // This will now wait 1 second until it sets it to empty
+            // so you can see that the progress bar does
+            // increment to 100
+            await Task.Delay(1000);
+            progressBar1.Value = 0;
+            progressBar1.Visible = false;
+        }
+
+        private async Task AuthenticateAsync()
+        {
+            var progressBarCount = 0;
+            progressBar1.Visible = true;
+            while (progressBarCount <= 100)
             {
-                DialogResult = DialogResult.OK;
+                await Task.Delay(10);
+                progressBar1.Value = progressBarCount++;
             }
 
-            else
-            {
-                // Store credentials.
-                var adminCredentials = db.LoadAccountCredentials<UserModel>("users", txtUsername.Text);
-                foreach (var recs in adminCredentials)
+            var task = Task.Run(() =>
                 {
-                    storeCredentials.Add(recs.userName);
-                    storeCredentials.Add(recs.password);
-                }
-
-                // If no account is associated by the username provided,
-                // prompt message with wrong credentials.
-                if (!storeCredentials.Any())
-                {
-                    MessageBox.Show("Wrong user name or password.", "Login", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                else
-                {
-                    // Else compare the password Vs password in the db that is hashed.
-                    var result = SecurePasswordHasher.Verify(txtPassword.Text, ReturnStoredCredentials(1));
-                    if (result == true && ReturnStoredCredentials(0) == txtUsername.Text)
+                    // THIS IS SUPER ACCOUNT (stored in the application).
+                    if (txtUsername.Text == DEFAULT_USERNAME && txtPassword.Text == DEFAULT_PASSWORD)
                     {
-                        // Clear information.
-                        storeCredentials.Clear();
-                        this.Dispose();
                         DialogResult = DialogResult.OK;
                     }
+
                     else
                     {
-                        // Clear information.
-                        storeCredentials.Clear();
-                        GC.Collect();
-                        GC.WaitForPendingFinalizers();
-                        MessageBox.Show("Wrong user name or password.", "Login", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        // Store credentials.
+                        var adminCredentials = db.LoadAccountCredentials<UserModel>("users", txtUsername.Text);
+                        foreach (var recs in adminCredentials)
+                        {
+                            storeCredentials.Add(recs.userName);
+                            storeCredentials.Add(recs.password);
+                        }
+
+                        // If no account is associated by the username provided,
+                        // prompt message with wrong credentials.
+                        if (!storeCredentials.Any())
+                        {
+                            MessageBox.Show("Wrong user name or password.", "Login", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        else
+                        {
+                            // Else compare the password Vs password in the db that is hashed.
+                            var result = SecurePasswordHasher.Verify(txtPassword.Text, ReturnStoredCredentials(1));
+                            if (result == true && ReturnStoredCredentials(0) == txtUsername.Text)
+                            {
+                                // Clear information.
+                                storeCredentials.Clear();
+                                DialogResult = DialogResult.OK;
+                            }
+                            else
+                            {
+                                // Clear information.
+                                storeCredentials.Clear();
+                                GC.Collect();
+                                GC.WaitForPendingFinalizers();
+                                MessageBox.Show("Wrong user name or password.", "Login", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
+                        }
                     }
                 }
-            }
+            );
         }
 
         private string ReturnStoredCredentials(int index)
