@@ -44,10 +44,10 @@ namespace Design_project_admin
             // 
             this.panel2.Controls.Add(this.dataGridView1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 158);
+            this.panel2.Location = new System.Drawing.Point(0, 62);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(732, 291);
+            this.panel2.Size = new System.Drawing.Size(732, 387);
             this.panel2.TabIndex = 5;
             // 
             // dataGridView1
@@ -63,7 +63,7 @@ namespace Design_project_admin
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(732, 291);
+            this.dataGridView1.Size = new System.Drawing.Size(732, 387);
             this.dataGridView1.TabIndex = 87;
             // 
             // btnDelete
@@ -124,7 +124,7 @@ namespace Design_project_admin
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(732, 158);
+            this.panel1.Size = new System.Drawing.Size(732, 62);
             this.panel1.TabIndex = 4;
             // 
             // ManageDevice

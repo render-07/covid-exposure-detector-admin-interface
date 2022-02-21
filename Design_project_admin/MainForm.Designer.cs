@@ -32,28 +32,30 @@ namespace Design_project_admin
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.panelSideMenu = new System.Windows.Forms.Panel();
+            this.btnMangeAdminAccounts = new System.Windows.Forms.Button();
+            this.btnLinkDeviceToPerson = new System.Windows.Forms.Button();
+            this.btnManageDevices = new System.Windows.Forms.Button();
+            this.btnManagePopulation = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnLogout = new System.Windows.Forms.Button();
+            this.btnExposureLogs = new System.Windows.Forms.Button();
             this.panelLogo = new System.Windows.Forms.Panel();
             this.panelBottom = new System.Windows.Forms.Panel();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.lblStatus = new System.Windows.Forms.Label();
             this.panelChildForm = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.bwLoadDevices = new System.ComponentModel.BackgroundWorker();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblTime = new System.Windows.Forms.Label();
             this.tmrDate = new System.Windows.Forms.Timer(this.components);
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnMangeAdminAccounts = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.btnManageDevices = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.btnLogout = new System.Windows.Forms.Button();
-            this.btnExposureLogs = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.panelSideMenu.SuspendLayout();
             this.panelBottom.SuspendLayout();
             this.panelChildForm.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelSideMenu
@@ -61,9 +63,9 @@ namespace Design_project_admin
             this.panelSideMenu.AutoScroll = true;
             this.panelSideMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(7)))), ((int)(((byte)(17)))));
             this.panelSideMenu.Controls.Add(this.btnMangeAdminAccounts);
-            this.panelSideMenu.Controls.Add(this.button3);
+            this.panelSideMenu.Controls.Add(this.btnLinkDeviceToPerson);
             this.panelSideMenu.Controls.Add(this.btnManageDevices);
-            this.panelSideMenu.Controls.Add(this.button1);
+            this.panelSideMenu.Controls.Add(this.btnManagePopulation);
             this.panelSideMenu.Controls.Add(this.panel1);
             this.panelSideMenu.Controls.Add(this.btnLogout);
             this.panelSideMenu.Controls.Add(this.btnExposureLogs);
@@ -74,6 +76,79 @@ namespace Design_project_admin
             this.panelSideMenu.Size = new System.Drawing.Size(250, 700);
             this.panelSideMenu.TabIndex = 0;
             // 
+            // btnMangeAdminAccounts
+            // 
+            this.btnMangeAdminAccounts.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnMangeAdminAccounts.FlatAppearance.BorderSize = 0;
+            this.btnMangeAdminAccounts.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(23)))), ((int)(((byte)(23)))));
+            this.btnMangeAdminAccounts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMangeAdminAccounts.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnMangeAdminAccounts.Image = global::Design_project_admin.Properties.Resources.iconmonstr_user_8_2401;
+            this.btnMangeAdminAccounts.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMangeAdminAccounts.Location = new System.Drawing.Point(0, 324);
+            this.btnMangeAdminAccounts.Name = "btnMangeAdminAccounts";
+            this.btnMangeAdminAccounts.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnMangeAdminAccounts.Size = new System.Drawing.Size(250, 56);
+            this.btnMangeAdminAccounts.TabIndex = 9;
+            this.btnMangeAdminAccounts.Text = "Administation accounts";
+            this.btnMangeAdminAccounts.UseVisualStyleBackColor = true;
+            this.btnMangeAdminAccounts.Click += new System.EventHandler(this.btnMangeAdminAccounts_Click);
+            // 
+            // btnLinkDeviceToPerson
+            // 
+            this.btnLinkDeviceToPerson.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnLinkDeviceToPerson.FlatAppearance.BorderSize = 0;
+            this.btnLinkDeviceToPerson.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(23)))), ((int)(((byte)(23)))));
+            this.btnLinkDeviceToPerson.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLinkDeviceToPerson.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnLinkDeviceToPerson.Image = global::Design_project_admin.Properties.Resources.iconmonstr_link_1_2401;
+            this.btnLinkDeviceToPerson.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLinkDeviceToPerson.Location = new System.Drawing.Point(0, 268);
+            this.btnLinkDeviceToPerson.Name = "btnLinkDeviceToPerson";
+            this.btnLinkDeviceToPerson.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnLinkDeviceToPerson.Size = new System.Drawing.Size(250, 56);
+            this.btnLinkDeviceToPerson.TabIndex = 8;
+            this.btnLinkDeviceToPerson.Text = "Link device to person";
+            this.btnLinkDeviceToPerson.UseVisualStyleBackColor = true;
+            this.btnLinkDeviceToPerson.Click += new System.EventHandler(this.btnLinkDeviceToPerson_Click);
+            // 
+            // btnManageDevices
+            // 
+            this.btnManageDevices.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnManageDevices.FlatAppearance.BorderSize = 0;
+            this.btnManageDevices.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(23)))), ((int)(((byte)(23)))));
+            this.btnManageDevices.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnManageDevices.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnManageDevices.Image = global::Design_project_admin.Properties.Resources.iconmonstr_disk_9_240;
+            this.btnManageDevices.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnManageDevices.Location = new System.Drawing.Point(0, 212);
+            this.btnManageDevices.Name = "btnManageDevices";
+            this.btnManageDevices.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnManageDevices.Size = new System.Drawing.Size(250, 56);
+            this.btnManageDevices.TabIndex = 7;
+            this.btnManageDevices.Text = "Manage devices";
+            this.btnManageDevices.UseVisualStyleBackColor = true;
+            this.btnManageDevices.Click += new System.EventHandler(this.btnManageDevices_Click);
+            // 
+            // btnManagePopulation
+            // 
+            this.btnManagePopulation.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnManagePopulation.FlatAppearance.BorderSize = 0;
+            this.btnManagePopulation.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(23)))), ((int)(((byte)(23)))));
+            this.btnManagePopulation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnManagePopulation.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnManagePopulation.Image = global::Design_project_admin.Properties.Resources.iconmonstr_user_29_2401;
+            this.btnManagePopulation.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnManagePopulation.Location = new System.Drawing.Point(0, 156);
+            this.btnManagePopulation.Name = "btnManagePopulation";
+            this.btnManagePopulation.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnManagePopulation.Size = new System.Drawing.Size(250, 56);
+            this.btnManagePopulation.TabIndex = 6;
+            this.btnManagePopulation.Text = "Manage population information";
+            this.btnManagePopulation.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnManagePopulation.UseVisualStyleBackColor = true;
+            this.btnManagePopulation.Click += new System.EventHandler(this.btnManagePopulation_Click);
+            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Gray;
@@ -82,6 +157,42 @@ namespace Design_project_admin
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(250, 1);
             this.panel1.TabIndex = 5;
+            // 
+            // btnLogout
+            // 
+            this.btnLogout.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnLogout.FlatAppearance.BorderSize = 0;
+            this.btnLogout.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(23)))), ((int)(((byte)(23)))));
+            this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogout.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnLogout.Image = global::Design_project_admin.Properties.Resources.iconmonstr_log_out_7_2401;
+            this.btnLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLogout.Location = new System.Drawing.Point(0, 644);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnLogout.Size = new System.Drawing.Size(250, 56);
+            this.btnLogout.TabIndex = 3;
+            this.btnLogout.Text = "Logout";
+            this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            // 
+            // btnExposureLogs
+            // 
+            this.btnExposureLogs.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnExposureLogs.FlatAppearance.BorderSize = 0;
+            this.btnExposureLogs.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(23)))), ((int)(((byte)(23)))));
+            this.btnExposureLogs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExposureLogs.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnExposureLogs.Image = global::Design_project_admin.Properties.Resources.iconmonstr_virus_1_2401;
+            this.btnExposureLogs.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExposureLogs.Location = new System.Drawing.Point(0, 100);
+            this.btnExposureLogs.Name = "btnExposureLogs";
+            this.btnExposureLogs.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnExposureLogs.Size = new System.Drawing.Size(250, 56);
+            this.btnExposureLogs.TabIndex = 1;
+            this.btnExposureLogs.Text = "Exposure logs";
+            this.btnExposureLogs.UseVisualStyleBackColor = true;
+            this.btnExposureLogs.Click += new System.EventHandler(this.btnExposureLogs_Click);
             // 
             // panelLogo
             // 
@@ -124,11 +235,22 @@ namespace Design_project_admin
             // panelChildForm
             // 
             this.panelChildForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.panelChildForm.Controls.Add(this.pictureBox1);
+            this.panelChildForm.Controls.Add(this.panel4);
+            this.panelChildForm.Controls.Add(this.panel3);
             this.panelChildForm.Location = new System.Drawing.Point(250, 36);
             this.panelChildForm.Name = "panelChildForm";
             this.panelChildForm.Size = new System.Drawing.Size(800, 522);
             this.panelChildForm.TabIndex = 2;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(160, 120);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // bwLoadDevices
             // 
@@ -159,123 +281,22 @@ namespace Design_project_admin
             this.tmrDate.Interval = 1000;
             this.tmrDate.Tick += new System.EventHandler(this.tmrDate_Tick);
             // 
-            // pictureBox1
+            // panel3
             // 
-            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox1.Image = global::Design_project_admin.Properties.Resources._273759060_474864474236489_1053595112813018540_n;
-            this.pictureBox1.Location = new System.Drawing.Point(245, 97);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(308, 324);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.panel3.Controls.Add(this.button1);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(800, 255);
+            this.panel3.TabIndex = 2;
             // 
-            // btnMangeAdminAccounts
+            // panel4
             // 
-            this.btnMangeAdminAccounts.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnMangeAdminAccounts.FlatAppearance.BorderSize = 0;
-            this.btnMangeAdminAccounts.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(23)))), ((int)(((byte)(23)))));
-            this.btnMangeAdminAccounts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMangeAdminAccounts.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnMangeAdminAccounts.Image = global::Design_project_admin.Properties.Resources.iconmonstr_user_8_2401;
-            this.btnMangeAdminAccounts.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMangeAdminAccounts.Location = new System.Drawing.Point(0, 324);
-            this.btnMangeAdminAccounts.Name = "btnMangeAdminAccounts";
-            this.btnMangeAdminAccounts.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnMangeAdminAccounts.Size = new System.Drawing.Size(250, 56);
-            this.btnMangeAdminAccounts.TabIndex = 9;
-            this.btnMangeAdminAccounts.Text = "Administation accounts";
-            this.btnMangeAdminAccounts.UseVisualStyleBackColor = true;
-            this.btnMangeAdminAccounts.Click += new System.EventHandler(this.btnMangeAdminAccounts_Click);
-            // 
-            // button3
-            // 
-            this.button3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(23)))), ((int)(((byte)(23)))));
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.ForeColor = System.Drawing.Color.Gainsboro;
-            this.button3.Image = global::Design_project_admin.Properties.Resources.iconmonstr_link_1_2401;
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(0, 268);
-            this.button3.Name = "button3";
-            this.button3.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.button3.Size = new System.Drawing.Size(250, 56);
-            this.button3.TabIndex = 8;
-            this.button3.Text = "Link device to person";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // btnManageDevices
-            // 
-            this.btnManageDevices.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnManageDevices.FlatAppearance.BorderSize = 0;
-            this.btnManageDevices.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(23)))), ((int)(((byte)(23)))));
-            this.btnManageDevices.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnManageDevices.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnManageDevices.Image = global::Design_project_admin.Properties.Resources.iconmonstr_disk_9_240;
-            this.btnManageDevices.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnManageDevices.Location = new System.Drawing.Point(0, 212);
-            this.btnManageDevices.Name = "btnManageDevices";
-            this.btnManageDevices.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnManageDevices.Size = new System.Drawing.Size(250, 56);
-            this.btnManageDevices.TabIndex = 7;
-            this.btnManageDevices.Text = "Manage devices";
-            this.btnManageDevices.UseVisualStyleBackColor = true;
-            this.btnManageDevices.Click += new System.EventHandler(this.btnManageDevices_Click);
-            // 
-            // button1
-            // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(23)))), ((int)(((byte)(23)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.Color.Gainsboro;
-            this.button1.Image = global::Design_project_admin.Properties.Resources.iconmonstr_user_29_2401;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(0, 156);
-            this.button1.Name = "button1";
-            this.button1.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.button1.Size = new System.Drawing.Size(250, 56);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Manage population information";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // btnLogout
-            // 
-            this.btnLogout.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnLogout.FlatAppearance.BorderSize = 0;
-            this.btnLogout.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
-            this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLogout.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnLogout.Image = global::Design_project_admin.Properties.Resources.iconmonstr_log_out_7_2401;
-            this.btnLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLogout.Location = new System.Drawing.Point(0, 644);
-            this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnLogout.Size = new System.Drawing.Size(250, 56);
-            this.btnLogout.TabIndex = 3;
-            this.btnLogout.Text = "Logout";
-            this.btnLogout.UseVisualStyleBackColor = true;
-            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
-            // 
-            // btnExposureLogs
-            // 
-            this.btnExposureLogs.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnExposureLogs.FlatAppearance.BorderSize = 0;
-            this.btnExposureLogs.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(23)))), ((int)(((byte)(23)))));
-            this.btnExposureLogs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExposureLogs.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnExposureLogs.Image = global::Design_project_admin.Properties.Resources.iconmonstr_virus_1_2401;
-            this.btnExposureLogs.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExposureLogs.Location = new System.Drawing.Point(0, 100);
-            this.btnExposureLogs.Name = "btnExposureLogs";
-            this.btnExposureLogs.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnExposureLogs.Size = new System.Drawing.Size(250, 56);
-            this.btnExposureLogs.TabIndex = 1;
-            this.btnExposureLogs.Text = "Exposure logs";
-            this.btnExposureLogs.UseVisualStyleBackColor = true;
-            this.btnExposureLogs.Click += new System.EventHandler(this.btnExposureLogs_Click);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel4.Location = new System.Drawing.Point(0, 267);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(800, 255);
+            this.panel4.TabIndex = 3;
             // 
             // MainForm
             // 
@@ -301,7 +322,7 @@ namespace Design_project_admin
             this.panelChildForm.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -315,17 +336,19 @@ namespace Design_project_admin
         private System.Windows.Forms.Panel panelBottom;
         private System.Windows.Forms.Panel panelChildForm;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.ComponentModel.BackgroundWorker bwLoadDevices;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label lblTime;
         private System.Windows.Forms.Timer tmrDate;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnLinkDeviceToPerson;
         private System.Windows.Forms.Button btnManageDevices;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnManagePopulation;
         private System.Windows.Forms.Button btnMangeAdminAccounts;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel3;
     }
 }
 

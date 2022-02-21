@@ -37,7 +37,7 @@ namespace Design_project_admin
 
         private static void Login()
         {
-            using (LoginForm login = new LoginForm())
+            using (Login login = new Login())
             {
                 using (MainForm main = new MainForm())
                 {

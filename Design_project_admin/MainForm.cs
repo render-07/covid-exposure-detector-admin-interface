@@ -1,7 +1,12 @@
 ﻿using System;
+using System.Net;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MongoDBLibrary;
+using NewsAPI;
+using NewsAPI.Constants;
+using NewsAPI.Models;
 
 namespace Design_project_admin
 {
@@ -18,9 +23,30 @@ namespace Design_project_admin
             tmrDate.Start();
         }
 
+        private async void button1_Click(object sender, EventArgs e)
+        {
+            var url = "https://newsapi.org/v2/top-headlines?" +
+              "country=ph&" +
+              "q=COVID-19&" +
+              "apiKey=f8f6e937e8714abe90325099b943b1fd";
+
+            var json = Task.Run(() => new WebClient().DownloadString(url));
+
+            var options = new JsonSerializerOptions()
+            {
+                WriteIndented = true
+            };
+
+            var result = await json;
+
+            var jsonElement = System.Text.Json.JsonSerializer.Deserialize<JsonElement>(result);
+            MessageBox.Show(System.Text.Json.JsonSerializer.Serialize(jsonElement, options));
+
+        }
+
         private void MainForm_Load(object sender, EventArgs e)
         {
-
+           
         }
 
         // TODO
@@ -29,9 +55,6 @@ namespace Design_project_admin
         // csv bulk for device
         // csv bulk for persons
         // Exposure Logs
-        // Persons
-        // Devices
-        // Accounts
 
         private void tmrDate_Tick(object sender, EventArgs e)
         {
@@ -82,10 +105,96 @@ namespace Design_project_admin
             lblStatus.Text = "";
         }
 
-        private void btnExposureLogs_Click(object sender, EventArgs e)
+        private async void btnExposureLogs_Click(object sender, EventArgs e)
         {
-            // showSubMenu(panelSubMenu);
+            // Update UI
+            hideSubMenu();
+            lblStatus.Visible = true;
+            lblStatus.Text = "Loading logs...";
+            progressBar1.Visible = true;
+
+            btnManagePopulation.Enabled = false;
+            btnManageDevices.Enabled = false;
+            btnLinkDeviceToPerson.Enabled = false;
+            btnMangeAdminAccounts.Enabled = false;
+
+            try
+            {
+                // Initialize ManageDevice form
+                ExposureLogs obj = new ExposureLogs();
+                // On form load, trigger the ProgressBar effect
+                obj.TableData.Columns.Clear();
+                obj.TableData.Rows.Clear();
+                obj.FormClosed += Obj_FormClosed;
+                // Run operation in another thread
+                await LoadExposureAsync(obj);
+                openChildForm(obj);
+            }
+            catch (Exception)
+            {
+                //Handle Exception
+            }
+
+            lblStatus.Text = "Exposure logs loaded.";
+            // This will now wait 1 second until it sets it to empty
+            // so you can see that the progress bar does
+            // increment to 100
+            await Task.Delay(1000);
+            progressBar1.Value = 0;
+            progressBar1.Visible = false;
+
+            btnManagePopulation.Enabled = true;
+            btnManageDevices.Enabled = true;
+            btnLinkDeviceToPerson.Enabled = true;
+            btnMangeAdminAccounts.Enabled = true;
         }
+
+
+        private async void btnManagePopulation_Click(object sender, EventArgs e)
+        {
+            // Update UI
+            hideSubMenu();
+            lblStatus.Visible = true;
+            lblStatus.Text = "Loading population...";
+            progressBar1.Visible = true;
+
+            btnExposureLogs.Enabled = false;
+            btnManageDevices.Enabled = false;
+            btnLinkDeviceToPerson.Enabled = false;
+            btnMangeAdminAccounts.Enabled = false;
+
+            try
+            {
+                // Initialize ManageDevice form
+                ManagePopulation obj = new ManagePopulation();
+                // On form load, trigger the ProgressBar effect
+                obj.TableData.Columns.Clear();
+                obj.TableData.Rows.Clear();
+                obj.FormClosed += Obj_FormClosed;
+                // Run operation in another thread
+                await LoadPopulationAsync(obj);
+                openChildForm(obj);
+            }
+            catch (Exception)
+            {
+                //Handle Exception
+            }
+
+            lblStatus.Text = "Population information loaded.";
+            // This will now wait 1 second until it sets it to empty
+            // so you can see that the progress bar does
+            // increment to 100
+            await Task.Delay(1000);
+            progressBar1.Value = 0;
+            progressBar1.Visible = false;
+
+            btnExposureLogs.Enabled = true;
+            btnManageDevices.Enabled = true;
+            btnLinkDeviceToPerson.Enabled = true;
+            btnMangeAdminAccounts.Enabled = true;
+        }
+
+
         private async void btnManageDevices_Click(object sender, EventArgs e)
         {
             // Update UI
@@ -93,6 +202,11 @@ namespace Design_project_admin
             lblStatus.Visible = true;
             lblStatus.Text = "Loading devices...";
             progressBar1.Visible = true;
+
+            btnExposureLogs.Enabled = false;
+            btnManagePopulation.Enabled = false;
+            btnLinkDeviceToPerson.Enabled = false;
+            btnMangeAdminAccounts.Enabled = false;
 
             try
             {
@@ -117,6 +231,16 @@ namespace Design_project_admin
             await Task.Delay(1000);
             progressBar1.Value = 0;
             progressBar1.Visible = false;
+
+            btnExposureLogs.Enabled = true;
+            btnManagePopulation.Enabled = true;
+            btnLinkDeviceToPerson.Enabled = true;
+            btnMangeAdminAccounts.Enabled = true;
+        }
+
+        private void btnLinkDeviceToPerson_Click(object sender, EventArgs e)
+        {
+
         }
 
         private async void btnMangeAdminAccounts_Click(object sender, EventArgs e)
@@ -126,6 +250,11 @@ namespace Design_project_admin
             lblStatus.Visible = true;
             lblStatus.Text = "Loading accounts...";
             progressBar1.Visible = true;
+
+            btnExposureLogs.Enabled = false;
+            btnManagePopulation.Enabled = false;
+            btnManageDevices.Enabled = false;
+            btnLinkDeviceToPerson.Enabled = false;
 
             try
             {
@@ -151,6 +280,11 @@ namespace Design_project_admin
             await Task.Delay(1000);
             progressBar1.Value = 0;
             progressBar1.Visible = false;
+
+            btnExposureLogs.Enabled = true;
+            btnManagePopulation.Enabled = true;
+            btnManageDevices.Enabled = true;
+            btnLinkDeviceToPerson.Enabled = true;
         }
 
         private void btnLogout_Click(object sender, EventArgs e)
@@ -194,7 +328,6 @@ namespace Design_project_admin
 
         private async Task LoadAccountsAsync(ManageAdminAccountsForm obj)
         {
-            /// var records = await db.LoadRecord<DeviceModel>("devices");
             var records = Task.Run(() => db.LoadAllRecords<UserModel>("users"));
 
             var progressBarCount = 0;
@@ -221,6 +354,98 @@ namespace Design_project_admin
                         recs.address.ToString(),
                         recs.dateOfBirth.ToString(),
                         recs.userName.ToString()
+                    );
+                }
+                catch (System.NullReferenceException)
+                {
+
+                }
+            }
+        }
+
+        private async Task LoadPopulationAsync(ManagePopulation obj)
+        {
+            var records = Task.Run(() => db.LoadAllRecords<PersonModel>("population"));
+
+            var progressBarCount = 0;
+            while (progressBarCount <= 100)
+            {
+                await Task.Delay(10);
+                progressBar1.Value = progressBarCount++;
+            }
+
+            obj.TableData.Columns.Add("Fullname");
+            obj.TableData.Columns.Add("Date of birth");
+            obj.TableData.Columns.Add("Address");
+            obj.TableData.Columns.Add("Gender");
+            obj.TableData.Columns.Add("Age");
+            obj.TableData.Columns.Add("Contact Number");
+            obj.TableData.Columns.Add("Number of persons in the house");
+            obj.TableData.Columns.Add("Email");
+
+            var result = await records;
+            foreach (var recs in result)
+            {
+                try
+                {
+                    // Populate the Datagrid from another form
+                    obj.TableData.Rows.Add(
+                        recs.firstName.ToString() + " " +
+                        recs.middleName.ToString() + " " +
+                        recs.lastName.ToString(),
+                        recs.dateOfBirth.ToString(),
+                        recs.address.ToString(),
+                        recs.gender.ToString(),
+                        recs.age.ToString(),
+                        recs.contactNumber.ToString(),
+                        recs.NumberOfPersonsInTheHouse.ToString(),
+                        recs.email.ToString()
+                    );
+                }
+                catch (System.NullReferenceException)
+                {
+
+                }
+            }
+        }
+
+        private async Task LoadExposureAsync(ExposureLogs obj)
+        {
+            var records = Task.Run(() => db.LoadAllRecords<PersonModel>("population"));
+
+            var progressBarCount = 0;
+            while (progressBarCount <= 100)
+            {
+                await Task.Delay(10);
+                progressBar1.Value = progressBarCount++;
+            }
+
+            obj.TableData.Columns.Add("Fullname");
+            obj.TableData.Columns.Add("Date of birth");
+            obj.TableData.Columns.Add("Address");
+            obj.TableData.Columns.Add("Gender");
+            obj.TableData.Columns.Add("Age");
+            obj.TableData.Columns.Add("Contact Number");
+            obj.TableData.Columns.Add("Number of persons in the house");
+            obj.TableData.Columns.Add("Email");
+
+            var result = await records;
+            foreach (var recs in result)
+            {
+                try
+                {
+                    // Populate the Datagrid from another form
+                    obj.TableData.Rows.Add(
+                        recs.firstName.ToString() + " " +
+                        recs.middleName.ToString() + " " +
+                        recs.lastName.ToString(),
+                        recs.dateOfBirth.ToString(),
+                        recs.address.ToString(),
+                        recs.gender.ToString(),
+                        recs.age.ToString(),
+                        recs.contactNumber.ToString(),
+                        recs.NumberOfPersonsInTheHouse.ToString(),
+                        recs.email.ToString()
                     );
                 }
                 catch (System.NullReferenceException)

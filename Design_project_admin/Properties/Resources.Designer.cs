@@ -83,6 +83,46 @@ namespace Design_project_admin.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Coronavirus_second_wave {
+            get {
+                object obj = ResourceManager.GetObject("Coronavirus second wave", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Coronavirus_second_wave_amico {
+            get {
+                object obj = ResourceManager.GetObject("Coronavirus second wave-amico", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Coronavirus_second_wave_bro {
+            get {
+                object obj = ResourceManager.GetObject("Coronavirus second wave-bro", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Coronavirus_second_wave_bro1 {
+            get {
+                object obj = ResourceManager.GetObject("Coronavirus second wave-bro1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap iconmonstr_disk_9_240 {
             get {
                 object obj = ResourceManager.GetObject("iconmonstr-disk-9-240", resourceCulture);
@@ -186,6 +226,16 @@ namespace Design_project_admin.Properties {
         internal static System.Drawing.Bitmap iconmonstr_virus_1_2401 {
             get {
                 object obj = ResourceManager.GetObject("iconmonstr-virus-1-2401", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Location_tracking_rafiki {
+            get {
+                object obj = ResourceManager.GetObject("Location tracking-rafiki", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
