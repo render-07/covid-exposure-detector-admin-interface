@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
+using System.Linq;
 using System.Net;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -7,6 +11,8 @@ using MongoDBLibrary;
 using NewsAPI;
 using NewsAPI.Constants;
 using NewsAPI.Models;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Design_project_admin
 {
@@ -23,30 +29,68 @@ namespace Design_project_admin
             tmrDate.Start();
         }
 
-        private async void button1_Click(object sender, EventArgs e)
+        private  void button1_Click(object sender, EventArgs e)
+        {
+            
+
+
+
+        }
+
+        private IList<NewsApiModel> searchResults = new List<NewsApiModel>();
+
+        private void MainForm_Load(object sender, EventArgs e)
         {
             var url = "https://newsapi.org/v2/top-headlines?" +
-              "country=ph&" +
-              "q=COVID-19&" +
-              "apiKey=f8f6e937e8714abe90325099b943b1fd";
+           "country=ph&" +
+           "q=COVID-19&" +
+           "apiKey=f8f6e937e8714abe90325099b943b1fd";
 
-            var json = Task.Run(() => new WebClient().DownloadString(url));
+            // var json = Task.Run(() => new WebClient().DownloadString(url));
+            var json = new WebClient().DownloadString(url);
 
             var options = new JsonSerializerOptions()
             {
                 WriteIndented = true
             };
 
-            var result = await json;
+            // var result = await json;
 
-            var jsonElement = System.Text.Json.JsonSerializer.Deserialize<JsonElement>(result);
-            MessageBox.Show(System.Text.Json.JsonSerializer.Serialize(jsonElement, options));
+            //var jsonElement = System.Text.Json.JsonSerializer.Deserialize<JsonElement>(result);
+            //MessageBox.Show(System.Text.Json.JsonSerializer.Serialize(jsonElement, options));
 
+
+            JObject googleSearch = JObject.Parse(json);
+
+            // get JSON result objects into a list
+            IList<JToken> results = googleSearch["articles"].Children().ToList();
+
+            // serialize JSON results into .NET objects
+            foreach (JToken rec in results)
+            {
+                NewsApiModel searchResult = JsonConvert.DeserializeObject<NewsApiModel>(rec.ToString());
+                searchResults.Add(searchResult);
+            }
+
+            // List the properties of the searchResults IList
+            foreach (NewsApiModel item in searchResults)
+            {
+                //MessageBox.Show(item.author);
+                //MessageBox.Show(item.title);
+                //MessageBox.Show(item.description);
+                richTextBox1.Text = item.title;
+                richTextBox2.Text = item.content;
+                richTextBox3.Text = item.description;
+                ///MessageBox.Show(item.urlToImage);
+                ///
+                pictureBox1.ImageLocation = item.urlToImage;
+            }
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
+
+        private void MainForm_Shown(object sender, EventArgs e)
         {
-           
+    
         }
 
         // TODO

@@ -104,3 +104,4 @@ D:\Redner BSCPE\4th Year BSCPE 4-6\Design Project\THESIS\covid-exposure-detector
 D:\Redner BSCPE\4th Year BSCPE 4-6\Design Project\THESIS\covid-exposure-detector-admin-interface\Design_project_admin\bin\Debug\System.Text.Json.xml
 D:\Redner BSCPE\4th Year BSCPE 4-6\Design Project\THESIS\covid-exposure-detector-admin-interface\Design_project_admin\bin\Debug\System.Threading.Tasks.Extensions.xml
 D:\Redner BSCPE\4th Year BSCPE 4-6\Design Project\THESIS\covid-exposure-detector-admin-interface\Design_project_admin\bin\Debug\System.ValueTuple.xml
+D:\Redner BSCPE\4th Year BSCPE 4-6\Design Project\THESIS\covid-exposure-detector-admin-interface\Design_project_admin\obj\Debug\Design_project_admin.csproj.CopyComplete
