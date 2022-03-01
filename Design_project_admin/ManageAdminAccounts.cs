@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace Design_project_admin
 {
-    public partial class ManageAdminAccountsForm : Form
+    public partial class ManageAdminAccounts : Form
     {
         private readonly MongoAPI db = new MongoAPI("DP");
         private DataTable tableData = new DataTable();
@@ -22,7 +22,7 @@ namespace Design_project_admin
             set { tableData = value; }  // set method
         }
 
-        public ManageAdminAccountsForm()
+        public ManageAdminAccounts()
         {
             InitializeComponent();
             dataGridView1.DataSource = TableData;

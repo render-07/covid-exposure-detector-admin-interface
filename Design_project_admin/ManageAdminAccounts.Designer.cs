@@ -1,7 +1,7 @@
 ﻿
 namespace Design_project_admin
 {
-    partial class ManageAdminAccountsForm
+    partial class ManageAdminAccounts
     {
         /// <summary>
         /// Required designer variable.
@@ -171,7 +171,7 @@ namespace Design_project_admin
             this.dataGridView2.TabIndex = 87;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
-            // ManageAdminAccountsForm
+            // ManageAdminAccounts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -180,8 +180,8 @@ namespace Design_project_admin
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Lato", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "ManageAdminAccountsForm";
-            this.Text = "ManageAdminAccountsForm";
+            this.Name = "ManageAdminAccounts";
+            this.Text = "ManageAdminAccounts";
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);

@@ -282,9 +282,46 @@ namespace Design_project_admin
             btnMangeAdminAccounts.Enabled = true;
         }
 
-        private void btnLinkDeviceToPerson_Click(object sender, EventArgs e)
+        private async void btnLinkDeviceToPerson_Click(object sender, EventArgs e)
         {
+            // Update UI
+            hideSubMenu();
+            lblStatus.Visible = true;
+            lblStatus.Text = "Loading...";
+            progressBar1.Visible = true;
 
+            btnExposureLogs.Enabled = false;
+            btnManagePopulation.Enabled = false;
+            btnManageDevices.Enabled = false;
+            btnMangeAdminAccounts.Enabled = false;
+
+            try
+            {
+                // Initialize ManageDevice form
+                LinkDeviceToPerson obj = new LinkDeviceToPerson();
+                // On form load, trigger the ProgressBar effect
+                obj.FormClosed += Obj_FormClosed;
+                // Run operation in another thread
+                await LoadDevicePersonAsync(obj);
+                openChildForm(obj);
+            }
+            catch (Exception)
+            {
+                //Handle Exception
+            }
+
+            lblStatus.Text = "";
+            // This will now wait 1 second until it sets it to empty
+            // so you can see that the progress bar does
+            // increment to 100
+            await Task.Delay(1000);
+            progressBar1.Value = 0;
+            progressBar1.Visible = false;
+
+            btnExposureLogs.Enabled = true;
+            btnManagePopulation.Enabled = true;
+            btnManageDevices.Enabled = true;
+            btnMangeAdminAccounts.Enabled = true;
         }
 
         private async void btnMangeAdminAccounts_Click(object sender, EventArgs e)
@@ -303,7 +340,7 @@ namespace Design_project_admin
             try
             {
                 // Initialize ManageDevice form
-                ManageAdminAccountsForm obj = new ManageAdminAccountsForm();
+                ManageAdminAccounts obj = new ManageAdminAccounts();
                 // On form load, trigger the ProgressBar effect
                 obj.TableData.Columns.Clear();
                 obj.TableData.Rows.Clear();
@@ -337,7 +374,49 @@ namespace Design_project_admin
             Close();
         }
 
-        # region CRUD Operations
+        #region CRUD Operations
+
+        private async Task LoadDevicePersonAsync(LinkDeviceToPerson obj)
+        {
+            var deviceRecords = Task.Run(() => db.LoadAllRecords<DeviceModel>("devices"));
+            var personRecords = Task.Run(() => db.LoadAllRecords<PersonModel>("population"));
+
+            var progressBarCount = 0;
+            while (progressBarCount <= 100)
+            {
+                await Task.Delay(10);
+                progressBar1.Value = progressBarCount++;
+            }
+
+            var result1 = await deviceRecords;
+            var result2 = await personRecords;
+
+            foreach (var recs1 in result1)
+            {
+                try
+                {
+                    // Populate the Datagrid from another form
+                    obj.DeviceNames.Add(recs1);
+                }
+                catch (System.NullReferenceException)
+                {
+
+                }
+            }
+
+            foreach (var recs2 in result2)
+            {
+                try
+                {
+                    // Populate the Datagrid from another form
+                    obj.PopulationNames.Add(recs2);
+                }
+                catch (System.NullReferenceException)
+                {
+
+                }
+            }
+        }
 
         private async Task LoadDevicesAsync(ManageDevice obj)
         {
@@ -370,7 +449,7 @@ namespace Design_project_admin
             }         
         }
 
-        private async Task LoadAccountsAsync(ManageAdminAccountsForm obj)
+        private async Task LoadAccountsAsync(ManageAdminAccounts obj)
         {
             var records = Task.Run(() => db.LoadAllRecords<UserModel>("users"));
 

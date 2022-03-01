@@ -120,6 +120,12 @@
     <Compile Include="ExposureLogs.Designer.cs">
       <DependentUpon>ExposureLogs.cs</DependentUpon>
     </Compile>
+    <Compile Include="LinkDeviceToPerson.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LinkDeviceToPerson.Designer.cs">
+      <DependentUpon>LinkDeviceToPerson.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,11 +138,11 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ManageAdminAccountsForm.cs">
+    <Compile Include="ManageAdminAccounts.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ManageAdminAccountsForm.Designer.cs">
-      <DependentUpon>ManageAdminAccountsForm.cs</DependentUpon>
+    <Compile Include="ManageAdminAccounts.Designer.cs">
+      <DependentUpon>ManageAdminAccounts.cs</DependentUpon>
     </Compile>
     <Compile Include="ManageDevice.cs">
       <SubType>Form</SubType>
@@ -173,14 +179,17 @@
     <EmbeddedResource Include="ExposureLogs.resx">
       <DependentUpon>ExposureLogs.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LinkDeviceToPerson.resx">
+      <DependentUpon>LinkDeviceToPerson.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ManageAdminAccountsForm.resx">
-      <DependentUpon>ManageAdminAccountsForm.cs</DependentUpon>
+    <EmbeddedResource Include="ManageAdminAccounts.resx">
+      <DependentUpon>ManageAdminAccounts.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ManageDevice.resx">
       <DependentUpon>ManageDevice.cs</DependentUpon>

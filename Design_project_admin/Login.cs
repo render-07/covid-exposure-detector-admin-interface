@@ -34,13 +34,12 @@ namespace Design_project_admin
             if (String.IsNullOrEmpty(txtUsername.Text) || String.IsNullOrEmpty(txtPassword.Text))
             {
                 MessageBox.Show("Fill up the fields first.", "Login", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                btnLogin.Enabled = true;
             }
             else
             {
                 Authenticate();
             }
-
-            
         }
 
         private async void Authenticate()
@@ -53,6 +52,7 @@ namespace Design_project_admin
             await Task.Delay(1000);
             progressBar1.Value = 0;
             progressBar1.Visible = false;
+            btnLogin.Enabled = true;
         }
 
         private async Task AuthenticateAsync()
@@ -65,51 +65,50 @@ namespace Design_project_admin
                 progressBar1.Value = progressBarCount++;
             }
 
-            var task = Task.Run(() =>
+            var task = Task.Run(() => {
+                // THIS IS SUPER ACCOUNT (stored in the application).
+                if (txtUsername.Text == DEFAULT_USERNAME && txtPassword.Text == DEFAULT_PASSWORD)
                 {
-                    // THIS IS SUPER ACCOUNT (stored in the application).
-                    if (txtUsername.Text == DEFAULT_USERNAME && txtPassword.Text == DEFAULT_PASSWORD)
+                    DialogResult = DialogResult.OK;
+                }
+
+                else
+                {
+                    // Store credentials.
+                    var adminCredentials = db.LoadAccountCredentials<UserModel>("users", txtUsername.Text);
+                    foreach (var recs in adminCredentials)
                     {
-                        DialogResult = DialogResult.OK;
+                        storeCredentials.Add(recs.userName);
+                        storeCredentials.Add(recs.password);
                     }
 
+                    // If no account is associated by the username provided,
+                    // prompt message with wrong credentials.
+                    if (!storeCredentials.Any())
+                    {
+                        MessageBox.Show("Wrong user name or password.", "Login", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                     else
                     {
-                        // Store credentials.
-                        var adminCredentials = db.LoadAccountCredentials<UserModel>("users", txtUsername.Text);
-                        foreach (var recs in adminCredentials)
+                        // Else compare the password Vs password in the db that is hashed.
+                        var result = SecurePasswordHasher.Verify(txtPassword.Text, ReturnStoredCredentials(1));
+                        if (result == true && ReturnStoredCredentials(0) == txtUsername.Text)
                         {
-                            storeCredentials.Add(recs.userName);
-                            storeCredentials.Add(recs.password);
-                        }
-
-                        // If no account is associated by the username provided,
-                        // prompt message with wrong credentials.
-                        if (!storeCredentials.Any())
-                        {
-                            MessageBox.Show("Wrong user name or password.", "Login", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            // Clear information.
+                            storeCredentials.Clear();
+                            DialogResult = DialogResult.OK;
                         }
                         else
                         {
-                            // Else compare the password Vs password in the db that is hashed.
-                            var result = SecurePasswordHasher.Verify(txtPassword.Text, ReturnStoredCredentials(1));
-                            if (result == true && ReturnStoredCredentials(0) == txtUsername.Text)
-                            {
-                                // Clear information.
-                                storeCredentials.Clear();
-                                DialogResult = DialogResult.OK;
-                            }
-                            else
-                            {
-                                // Clear information.
-                                storeCredentials.Clear();
-                                GC.Collect();
-                                GC.WaitForPendingFinalizers();
-                                MessageBox.Show("Wrong user name or password.", "Login", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            }
+                            // Clear information.
+                            storeCredentials.Clear();
+                            GC.Collect();
+                            GC.WaitForPendingFinalizers();
+                            MessageBox.Show("Wrong user name or password.", "Login", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
                 }
+            }
             );
         }
 
