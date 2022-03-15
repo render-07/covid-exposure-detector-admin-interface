@@ -44,7 +44,7 @@ namespace Design_project_admin
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
             this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(684, 4);
+            this.btnClose.Location = new System.Drawing.Point(736, 4);
             this.btnClose.Margin = new System.Windows.Forms.Padding(4);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(44, 36);
@@ -57,7 +57,7 @@ namespace Design_project_admin
             // 
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(133, 146);
+            this.comboBox1.Location = new System.Drawing.Point(112, 122);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(223, 24);
             this.comboBox1.TabIndex = 5;
@@ -66,7 +66,7 @@ namespace Design_project_admin
             // 
             this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(444, 146);
+            this.comboBox2.Location = new System.Drawing.Point(449, 122);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(223, 24);
             this.comboBox2.TabIndex = 6;
@@ -78,7 +78,7 @@ namespace Design_project_admin
             this.btnLink.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LimeGreen;
             this.btnLink.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLink.ForeColor = System.Drawing.Color.White;
-            this.btnLink.Location = new System.Drawing.Point(350, 257);
+            this.btnLink.Location = new System.Drawing.Point(342, 257);
             this.btnLink.Margin = new System.Windows.Forms.Padding(4);
             this.btnLink.Name = "btnLink";
             this.btnLink.Size = new System.Drawing.Size(100, 28);
@@ -92,7 +92,7 @@ namespace Design_project_admin
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(42)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(732, 449);
+            this.ClientSize = new System.Drawing.Size(784, 483);
             this.Controls.Add(this.btnLink);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.comboBox1);
