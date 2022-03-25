@@ -58,7 +58,37 @@ namespace MongoDBLibrary
             return collection.Find(filter).ToList();
         }
 
+        public List<T> LoadDeviceByDeviceName<T>(string table, string deviceName)
+        {
+            var collection = db.GetCollection<T>(table);
+            var builder = Builders<T>.Filter;
+            var filter = builder.Eq("deviceName", deviceName);
+            return collection.Find(filter).ToList();
+        }
 
+        public List<T> GetPersonIdByDeviceId<T>(string table, ObjectId deviceId)
+        {
+            var collection = db.GetCollection<T>(table);
+            var builder = Builders<T>.Filter;
+            var filter = builder.Eq("deviceId", deviceId);
+            return collection.Find(filter).ToList();
+        }
+
+        public List<T> LoadPersonByPersonId<T>(string table, ObjectId personId)
+        {
+            var collection = db.GetCollection<T>(table);
+            var builder = Builders<T>.Filter;
+            var filter = builder.Eq("_id", personId);
+            return collection.Find(filter).ToList();
+        }
+
+        public List<T> LoadDeviceDeviceUID<T>(string table, string uid)
+        {
+            var collection = db.GetCollection<T>(table);
+            var builder = Builders<T>.Filter;
+            var filter = builder.Eq("uid", uid);
+            return collection.Find(filter).ToList();
+        }
 
         #endregion
 

@@ -33,6 +33,8 @@ namespace Design_project_admin
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.btnLink = new System.Windows.Forms.Button();
+            this.lblFullnames = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnClose
@@ -87,12 +89,36 @@ namespace Design_project_admin
             this.btnLink.UseVisualStyleBackColor = false;
             this.btnLink.Click += new System.EventHandler(this.btnLink_Click);
             // 
+            // lblFullnames
+            // 
+            this.lblFullnames.AutoSize = true;
+            this.lblFullnames.Font = new System.Drawing.Font("Lato", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFullnames.ForeColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.lblFullnames.Location = new System.Drawing.Point(183, 66);
+            this.lblFullnames.Name = "lblFullnames";
+            this.lblFullnames.Size = new System.Drawing.Size(81, 25);
+            this.lblFullnames.TabIndex = 8;
+            this.lblFullnames.Text = "Names:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Lato", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.label2.Location = new System.Drawing.Point(515, 66);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(90, 25);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "Devices:";
+            // 
             // LinkDeviceToPerson
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(42)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(784, 483);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lblFullnames);
             this.Controls.Add(this.btnLink);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.comboBox1);
@@ -103,6 +129,7 @@ namespace Design_project_admin
             this.Text = "LinkDeviceToPerson";
             this.Load += new System.EventHandler(this.LinkDeviceToPerson_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -112,5 +139,7 @@ namespace Design_project_admin
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Button btnLink;
+        private System.Windows.Forms.Label lblFullnames;
+        private System.Windows.Forms.Label label2;
     }
 }

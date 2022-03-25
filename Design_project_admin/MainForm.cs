@@ -535,6 +535,7 @@ namespace Design_project_admin
         private async Task LoadExposureAsync(ExposureLogs obj)
         {
             var records = Task.Run(() => db.LoadAllRecords<PersonModel>("population"));
+            var contactTracing = Task.Run(() => db.LoadAllRecords<InformationModel>("information"));
 
             var progressBarCount = 0;
             while (progressBarCount <= 100)
@@ -544,32 +545,64 @@ namespace Design_project_admin
             }
 
             obj.TableData.Columns.Add("Fullname");
-            obj.TableData.Columns.Add("Date of birth");
-            obj.TableData.Columns.Add("Address");
-            obj.TableData.Columns.Add("Gender");
-            obj.TableData.Columns.Add("Age");
-            obj.TableData.Columns.Add("Contact Number");
-            obj.TableData.Columns.Add("Number of persons in the house");
-            obj.TableData.Columns.Add("Email");
-
-            var result = await records;
+            obj.TableData.Columns.Add("Linked device");
+            obj.TableData.Columns.Add("Close contact");
+            obj.TableData.Columns.Add("Date");
+            
+            // get all logs of contacts
+            var result = await contactTracing;
             foreach (var recs in result)
             {
                 try
                 {
-                    // Populate the Datagrid from another form
-                    obj.TableData.Rows.Add(
-                        recs.firstName.ToString() + " " +
-                        recs.middleName.ToString() + " " +
-                        recs.lastName.ToString(),
-                        recs.dateOfBirth.ToString(),
-                        recs.address.ToString(),
-                        recs.gender.ToString(),
-                        recs.age.ToString(),
-                        recs.contactNumber.ToString(),
-                        recs.NumberOfPersonsInTheHouse.ToString(),
-                        recs.email.ToString()
-                    );
+                    // get the _id of device by deviceName
+                    var getIDByDeviceName = db.LoadDeviceByDeviceName<DeviceModel>("devices", recs.fromWhatDevice);
+
+                    foreach (var deviceId in getIDByDeviceName)
+                    {
+                        // get person _id by device _id
+                        var getpersonId = db.GetPersonIdByDeviceId<LinkModel>("link", deviceId._id);
+
+                        foreach (var personId in getpersonId)
+                        {
+                            // get information of person by person _id
+                            var getPerson = db.LoadPersonByPersonId<PersonModel>("population", personId.personId);
+                            
+                            foreach (var person in getPerson)
+                            {
+                                // This is for close contacts info
+                                var getDeviceById = db.LoadDeviceDeviceUID<DeviceModel>("devices", recs.closeContact);
+                                foreach (var device in getDeviceById)
+                                {
+                                    var getPersonLinkedInDevice = db.GetPersonIdByDeviceId<LinkModel>("link", device._id);
+                                    foreach (var contactPersonId in getPersonLinkedInDevice)
+                                    {
+                                        // get information of person by person _id
+                                        var contactPersonInfos = db.LoadPersonByPersonId<PersonModel>("population", contactPersonId.personId);
+                                    
+                                        foreach (var contactPersonInfo in contactPersonInfos)
+                                        {
+                                            // Populate the Datagrid from another form
+                                            obj.TableData.Rows.Add(
+                                                person.firstName.ToString() + " " +
+                                                person.middleName.ToString() + " " +
+                                                person.lastName.ToString(),
+                                                deviceId.deviceName.ToString(),
+                                                contactPersonInfo.firstName.ToString() + " " +
+                                                contactPersonInfo.middleName.ToString() + " " +
+                                                contactPersonInfo.lastName.ToString(),
+                                                recs.date.ToString("MM/dd/yyyy hh:mm tt")
+                                            );
+                                        }
+                                    }
+                                }
+
+                                
+                            }
+                        }
+                    }
+
+                   
                 }
                 catch (System.NullReferenceException)
                 {
