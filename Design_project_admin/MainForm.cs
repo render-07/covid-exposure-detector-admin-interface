@@ -29,14 +29,6 @@ namespace Design_project_admin
             tmrDate.Start();
         }
 
-        private  void button1_Click(object sender, EventArgs e)
-        {
-            
-
-
-
-        }
-
         private IList<NewsApiModel> searchResults = new List<NewsApiModel>();
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -94,11 +86,8 @@ namespace Design_project_admin
         }
 
         // TODO
-        // add person
-        // link person to device
         // csv bulk for device
         // csv bulk for persons
-        // Exposure Logs
 
         private void tmrDate_Tick(object sender, EventArgs e)
         {
