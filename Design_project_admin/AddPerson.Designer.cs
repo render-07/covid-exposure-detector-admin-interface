@@ -52,6 +52,7 @@ namespace Design_project_admin
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txtNoOfPersons = new System.Windows.Forms.TextBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // dateTimePicker1
@@ -134,7 +135,7 @@ namespace Design_project_admin
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(17, 202);
+            this.progressBar1.Location = new System.Drawing.Point(17, 297);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(595, 23);
             this.progressBar1.TabIndex = 30;
@@ -147,7 +148,7 @@ namespace Design_project_admin
             this.btnAdd.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LimeGreen;
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd.ForeColor = System.Drawing.Color.White;
-            this.btnAdd.Location = new System.Drawing.Point(264, 246);
+            this.btnAdd.Location = new System.Drawing.Point(264, 341);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(4);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(100, 28);
@@ -192,6 +193,7 @@ namespace Design_project_admin
             // 
             // cmbGender
             // 
+            this.cmbGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbGender.FormattingEnabled = true;
             this.cmbGender.Location = new System.Drawing.Point(74, 107);
             this.cmbGender.Name = "cmbGender";
@@ -253,12 +255,24 @@ namespace Design_project_admin
             this.txtNoOfPersons.Text = "0";
             this.txtNoOfPersons.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNoOfPersons_KeyPress);
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.ForeColor = System.Drawing.Color.White;
+            this.checkBox1.Location = new System.Drawing.Point(17, 196);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(584, 68);
+            this.checkBox1.TabIndex = 48;
+            this.checkBox1.Text = resources.GetString("checkBox1.Text");
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
             // AddPerson
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.ClientSize = new System.Drawing.Size(629, 296);
+            this.ClientSize = new System.Drawing.Size(629, 384);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.txtNoOfPersons);
             this.Controls.Add(this.label9);
@@ -318,5 +332,6 @@ namespace Design_project_admin
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtNoOfPersons;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

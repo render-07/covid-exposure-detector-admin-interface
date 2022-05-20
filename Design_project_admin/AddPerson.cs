@@ -19,13 +19,19 @@ namespace Design_project_admin
         public AddPerson()
         {
             InitializeComponent();
+            cmbGender.Items.Add("Male");
+            cmbGender.Items.Add("Female");
         }
 
         private async void btnAdd_Click(object sender, EventArgs e)
         {
             if (PersonModelValidator())
             {
-
+                if (!checkBox1.Checked)
+                {
+                    MessageBox.Show("Please check the box if you want to proceed.", "Add new person", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
                 PersonModel obj = new PersonModel
                 {
                     firstName = txtFirstName.Text,
@@ -57,6 +63,17 @@ namespace Design_project_admin
                 // Hide progress bar again.
                 progressBar1.Value = 0;
                 progressBar1.Visible = false;
+
+                txtFirstName.Clear();
+                txtMiddleName.Clear();
+                txtLastName.Clear();
+                txtAddress.Clear();
+                cmbGender.Text = "";
+                txtAge.Clear();
+                txtContactNumber.Clear();
+                txtNoOfPersons.Clear();
+                txtEmail.Clear();
+                checkBox1.Checked = false;
             }
         }
 
