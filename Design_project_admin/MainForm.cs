@@ -537,7 +537,8 @@ namespace Design_project_admin
             obj.TableData.Columns.Add("Linked device");
             obj.TableData.Columns.Add("Close contact");
             obj.TableData.Columns.Add("Date");
-            
+            obj.TableData.Columns.Add("Location");
+
             // get all logs of contacts
             var result = await contactTracing;
             foreach (var recs in result)
@@ -551,6 +552,9 @@ namespace Design_project_admin
                     {
                         // get person _id by device _id
                         var getpersonId = db.GetPersonIdByDeviceId<LinkModel>("link", deviceId._id);
+                        
+                        // get location
+                        var getLocation = db.LoadLocationByUID<LocationModel>("locations", deviceId.uid);
 
                         foreach (var personId in getpersonId)
                         {
@@ -571,17 +575,22 @@ namespace Design_project_admin
                                     
                                         foreach (var contactPersonInfo in contactPersonInfos)
                                         {
-                                            // Populate the Datagrid from another form
-                                            obj.TableData.Rows.Add(
-                                                person.firstName.ToString() + " " +
-                                                person.middleName.ToString() + " " +
-                                                person.lastName.ToString(),
-                                                deviceId.deviceName.ToString(),
-                                                contactPersonInfo.firstName.ToString() + " " +
-                                                contactPersonInfo.middleName.ToString() + " " +
-                                                contactPersonInfo.lastName.ToString(),
-                                                recs.date.ToString("MM/dd/yyyy hh:mm tt")
-                                            );
+                                            foreach (var location in getLocation)
+                                            {
+                                                // Populate the Datagrid from another form
+                                                obj.TableData.Rows.Add(
+                                                    person.firstName.ToString() + " " +
+                                                    person.middleName.ToString() + " " +
+                                                    person.lastName.ToString(),
+                                                    deviceId.deviceName.ToString(),
+                                                    contactPersonInfo.firstName.ToString() + " " +
+                                                    contactPersonInfo.middleName.ToString() + " " +
+                                                    contactPersonInfo.lastName.ToString(),
+                                                    recs.date.ToString("MM/dd/yyyy hh:mm tt"),
+                                                    location.latitude + ", " + location.longitude
+                                                );
+                                            }
+                                            
                                         }
                                     }
                                 }

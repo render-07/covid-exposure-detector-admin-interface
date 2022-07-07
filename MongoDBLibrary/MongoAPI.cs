@@ -90,6 +90,14 @@ namespace MongoDBLibrary
             return collection.Find(filter).ToList();
         }
 
+        public List<T> LoadLocationByUID<T>(string table, string uid)
+        {
+            var collection = db.GetCollection<T>(table);
+            var builder = Builders<T>.Filter;
+            var filter = builder.Eq("uid", uid);
+            return collection.Find(filter).ToList();
+        }
+
         #endregion
 
         #region Delete
