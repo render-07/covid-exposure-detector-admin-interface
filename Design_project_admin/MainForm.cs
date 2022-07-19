@@ -33,10 +33,12 @@ namespace Design_project_admin
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            var url = "https://newsapi.org/v2/top-headlines?" +
-           "country=ph&" +
-           "q=COVID-19&" +
-           "apiKey=f8f6e937e8714abe90325099b943b1fd";
+           // var url = "https://newsapi.org/v2/top-headlines?" +
+           //"country=ph&" +
+           //"q=COVID-19&" +
+           //"apiKey=f8f6e937e8714abe90325099b943b1fd";
+
+            var url = "https://newsapi.org/v2/top-headlines?%20country=ph&q=COVID-19&apiKey=f8f6e937e8714abe90325099b943b1fd";
 
             // var json = Task.Run(() => new WebClient().DownloadString(url));
             var json = new WebClient().DownloadString(url);
@@ -151,22 +153,15 @@ namespace Design_project_admin
             btnLinkDeviceToPerson.Enabled = false;
             btnMangeAdminAccounts.Enabled = false;
 
-            try
-            {
-                // Initialize ManageDevice form
-                ExposureLogs obj = new ExposureLogs();
-                // On form load, trigger the ProgressBar effect
-                obj.TableData.Columns.Clear();
-                obj.TableData.Rows.Clear();
-                obj.FormClosed += Obj_FormClosed;
-                // Run operation in another thread
-                await LoadExposureAsync(obj);
-                openChildForm(obj);
-            }
-            catch (Exception)
-            {
-                //Handle Exception
-            }
+            // Initialize ManageDevice form
+            ExposureLogs obj = new ExposureLogs();
+            // On form load, trigger the ProgressBar effect
+            obj.TableData.Columns.Clear();
+            obj.TableData.Rows.Clear();
+            obj.FormClosed += Obj_FormClosed;
+            // Run operation in another thread
+            await LoadExposureAsync(obj);
+            openChildForm(obj);
 
             lblStatus.Text = "Exposure logs loaded.";
             // This will now wait 1 second until it sets it to empty
@@ -541,71 +536,67 @@ namespace Design_project_admin
 
             // get all logs of contacts
             var result = await contactTracing;
+
             foreach (var recs in result)
             {
-                try
+
+                string fullName = string.Empty;
+                string fullNameOfContactedPerson = string.Empty;
+                string location = string.Empty;
+
+                // get the _id of device by deviceName
+                var getIDByDeviceName = db.LoadDeviceByDeviceName<DeviceModel>("devices", recs.fromWhatDevice);
+                foreach (var deviceId in getIDByDeviceName)
                 {
-                    // get the _id of device by deviceName
-                    var getIDByDeviceName = db.LoadDeviceByDeviceName<DeviceModel>("devices", recs.fromWhatDevice);
+                    // get person _id by device _id
+                    var getpersonId = db.GetPersonIdByDeviceId<LinkModel>("link", deviceId._id);
 
-                    foreach (var deviceId in getIDByDeviceName)
+                    // get location
+                    var getLocation = db.LoadLocationByUID<LocationModel>("locations", deviceId.uid);
+                    foreach (var locationItem in getLocation)
                     {
-                        // get person _id by device _id
-                        var getpersonId = db.GetPersonIdByDeviceId<LinkModel>("link", deviceId._id);
-                        
-                        // get location
-                        var getLocation = db.LoadLocationByUID<LocationModel>("locations", deviceId.uid);
-
-                        foreach (var personId in getpersonId)
+                        location = locationItem.latitude + ", " + locationItem.longitude;
+                    }
+                    foreach (var personId in getpersonId)
+                    {
+                        // get information of person by person _id
+                        var getPerson = db.LoadPersonByPersonId<PersonModel>("population", personId.personId);
+                        foreach (var person in getPerson)
                         {
-                            // get information of person by person _id
-                            var getPerson = db.LoadPersonByPersonId<PersonModel>("population", personId.personId);
-                            
-                            foreach (var person in getPerson)
+                            fullName = person.firstName.ToString() + " " +
+                                person.middleName.ToString() + " " + person.lastName.ToString();
+
+                            // This is for close contacts info
+                            var getDeviceById = db.LoadDeviceDeviceUID<DeviceModel>("devices", recs.closeContact);
+                            foreach (var device in getDeviceById)
                             {
-                                // This is for close contacts info
-                                var getDeviceById = db.LoadDeviceDeviceUID<DeviceModel>("devices", recs.closeContact);
-                                foreach (var device in getDeviceById)
+
+                                var getPersonLinkedInDevice = db.GetPersonIdByDeviceId<LinkModel>("link", device._id);
+                                foreach (var contactPersonId in getPersonLinkedInDevice)
                                 {
-                                    var getPersonLinkedInDevice = db.GetPersonIdByDeviceId<LinkModel>("link", device._id);
-                                    foreach (var contactPersonId in getPersonLinkedInDevice)
+                                    // get information of person by person _id
+                                    var contactPersonInfos = db.LoadPersonByPersonId<PersonModel>("population", contactPersonId.personId);
+                                    foreach (var contactPersonInfo in contactPersonInfos)
                                     {
-                                        // get information of person by person _id
-                                        var contactPersonInfos = db.LoadPersonByPersonId<PersonModel>("population", contactPersonId.personId);
-                                    
-                                        foreach (var contactPersonInfo in contactPersonInfos)
-                                        {
-                                            foreach (var location in getLocation)
-                                            {
-                                                // Populate the Datagrid from another form
-                                                obj.TableData.Rows.Add(
-                                                    person.firstName.ToString() + " " +
-                                                    person.middleName.ToString() + " " +
-                                                    person.lastName.ToString(),
-                                                    deviceId.deviceName.ToString(),
-                                                    contactPersonInfo.firstName.ToString() + " " +
-                                                    contactPersonInfo.middleName.ToString() + " " +
-                                                    contactPersonInfo.lastName.ToString(),
-                                                    recs.date.ToString("MM/dd/yyyy hh:mm tt"),
-                                                    location.latitude + ", " + location.longitude
-                                                );
-                                            }
-                                            
-                                        }
+                                        fullNameOfContactedPerson = contactPersonInfo.firstName.ToString() + " " +
+                                        contactPersonInfo.middleName.ToString() + " " +
+                                        contactPersonInfo.lastName.ToString();
                                     }
                                 }
 
-                                
                             }
                         }
                     }
-
-                   
                 }
-                catch (System.NullReferenceException)
-                {
 
-                }
+
+                obj.TableData.Rows.Add(
+                    fullName,
+                    recs.fromWhatDevice,
+                    fullNameOfContactedPerson,
+                    recs.date,
+                    location
+                );
             }
         }
 
