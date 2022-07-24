@@ -18,8 +18,8 @@ namespace Design_project_admin
     {
         private readonly MongoAPI db = new MongoAPI("DP");
         private readonly List<string> storeCredentials = new List<string>();
-        private const string DEFAULT_USERNAME = "123";
-        private const string DEFAULT_PASSWORD = "123";
+        private const string DEFAULT_USERNAME = "***LETS_FIGHT_COVID_19***";
+        private const string DEFAULT_PASSWORD = "admin123";
 
         public Login()
         {
